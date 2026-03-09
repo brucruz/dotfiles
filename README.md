@@ -20,7 +20,6 @@ cd ~/code/brucruz/dotfiles
 git clone git@github.com:brucruz/kickstart.nvim.git ~/.config/nvim
 
 # 5. Install extras not in Homebrew
-curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | sh
 cargo install zellij
 
 # 6. Restart your terminal
