@@ -155,7 +155,7 @@ install_program() {
     return 0
   fi
   echo "Installing $name..."
-  eval "$install_cmd"
+  eval "$install_cmd" || { echo "warning: $name install exited with status $?"; }
 }
 
 clone_repo() {
