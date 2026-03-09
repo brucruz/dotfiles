@@ -6,11 +6,13 @@ DOTFILES_DIR="$REPO_ROOT/dotfiles"
 PRIVATE_EXAMPLE_DIR="$REPO_ROOT/private.example"
 DRY_RUN=0
 INSTALL_BREW=0
+FULL=0
 
 for arg in "$@"; do
   case "$arg" in
     --dry-run) DRY_RUN=1 ;;
     --brew) INSTALL_BREW=1 ;;
+    --full) FULL=1; INSTALL_BREW=1 ;;
   esac
 done
 
@@ -140,20 +142,83 @@ print_optional_private_contract_guidance() {
   echo "Do not commit real private files or tokens."
 }
 
+install_program() {
+  name="$1"
+  check_cmd="$2"
+  install_cmd="$3"
+  if eval "$check_cmd" >/dev/null 2>&1; then
+    echo "ok: $name already installed"
+    return 0
+  fi
+  if [[ "$DRY_RUN" -eq 1 ]]; then
+    echo "dry-run: would install $name"
+    return 0
+  fi
+  echo "Installing $name..."
+  eval "$install_cmd"
+}
+
+clone_repo() {
+  repo_url="$1"
+  target_dir="$2"
+  name="$3"
+  if [[ -d "$target_dir" ]]; then
+    echo "ok: $name already cloned at $target_dir"
+    return 0
+  fi
+  if [[ "$DRY_RUN" -eq 1 ]]; then
+    echo "dry-run: would clone $name to $target_dir"
+    return 0
+  fi
+  echo "Cloning $name..."
+  git clone "$repo_url" "$target_dir"
+}
+
 echo "Applying dotfiles from $DOTFILES_DIR"
 if [[ "$DRY_RUN" -eq 1 ]]; then
   echo "Mode: dry-run"
 fi
 
-# Brew packages (optional, run first so tools are available)
+# Homebrew (install if missing when --brew or --full)
 if [[ "$INSTALL_BREW" -eq 1 ]]; then
   if ! command -v brew >/dev/null 2>&1; then
-    echo "error: Homebrew is required for --brew. Install it first:"
-    echo '  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
-    exit 1
+    if [[ "$DRY_RUN" -eq 1 ]]; then
+      echo "dry-run: would install Homebrew"
+    else
+      echo "Installing Homebrew..."
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || /usr/local/bin/brew shellenv 2>/dev/null)"
+    fi
+  else
+    echo "ok: Homebrew already installed"
   fi
-  echo "Installing brew packages..."
-  brew bundle --file "$REPO_ROOT/Brewfile"
+  if [[ "$DRY_RUN" -eq 0 ]] && command -v brew >/dev/null 2>&1; then
+    echo "Installing brew packages..."
+    brew bundle --file "$REPO_ROOT/Brewfile"
+  elif [[ "$DRY_RUN" -eq 1 ]]; then
+    echo "dry-run: would run brew bundle"
+  fi
+fi
+
+# Programs (--full only)
+if [[ "$FULL" -eq 1 ]]; then
+  install_program "Oh My Zsh" \
+    "[[ -d \$HOME/.oh-my-zsh ]]" \
+    'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended'
+
+  install_program "nvm" \
+    "[[ -s \$HOME/.nvm/nvm.sh ]]" \
+    'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash'
+
+  install_program "Atuin" \
+    "command -v atuin" \
+    'curl --proto "=https" --tlsv1.2 -sSf https://setup.atuin.sh | sh'
+
+  install_program "Amp CLI" \
+    "command -v amp" \
+    'curl -fsSL https://ampcode.com/install.sh | bash'
+
+  clone_repo "https://github.com/brucruz/kickstart.nvim.git" "$HOME/.config/nvim" "Neovim config (kickstart.nvim)"
 fi
 
 # Home-level dotfiles
@@ -178,11 +243,11 @@ prompt_for_git_identity "$HOME/.gitconfig.personal"
 warn_if_insecure_permissions "$HOME/.gitconfig.personal"
 print_optional_private_contract_guidance
 
-# Reminders for things not automated
-echo ""
-echo "Manual steps for a fresh machine:"
-echo "  git clone git@github.com:brucruz/kickstart.nvim.git ~/.config/nvim"
-echo "  curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | sh"
-echo "  cargo install zellij"
+if [[ "$FULL" -eq 0 ]]; then
+  echo ""
+  echo "Tip: run with --full to also install Homebrew, brew packages, Oh My Zsh,"
+  echo "     nvm, Atuin, Amp CLI, and clone Neovim config."
+fi
+
 echo ""
 echo "Done."
