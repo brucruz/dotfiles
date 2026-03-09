@@ -204,7 +204,7 @@ fi
 if [[ "$FULL" -eq 1 ]]; then
   install_program "Oh My Zsh" \
     "[[ -d \$HOME/.oh-my-zsh ]]" \
-    'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended'
+    'KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended'
 
   install_program "nvm" \
     "[[ -s \$HOME/.nvm/nvm.sh ]]" \
