@@ -1,0 +1,27 @@
+# Secrets and credentials
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+.netrc
+.npmrc
+
+# Auth/state directories
+.aws/
+.ssh/
+.gnupg/
+.cursor/
+.mcp-auth/
+.config/gh/
+.config/gcloud/
+.config/configstore/
+
+# History and local state
+.zsh_history
+.bash_history
+.claude.json
+
+# OS/editor
+.DS_Store

@@ -1,0 +1,3 @@
+; Keep real tokens out of the repository.
+; Example:
+; //registry.npmjs.org/:_authToken=${NPM_TOKEN}

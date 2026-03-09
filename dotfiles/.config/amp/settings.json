@@ -1,0 +1,66 @@
+{
+  "amp.permissions": {
+    "bash": {
+      "allow": [
+        "pnpm",
+        "pnpm *",
+        "pnpm install",
+        "pnpm dev",
+        "pnpm build",
+        "pnpm compile",
+        "npm *",
+        "cat *",
+        "ls *",
+        "grep *",
+        "head *",
+        "tail *",
+        "git status",
+        "git diff *",
+        "git log *",
+        "git branch *",
+        "echo *",
+        "pwd",
+        "which *",
+        "type *"
+      ],
+      "deny": [
+        "rm -rf *",
+        "sudo *",
+        "curl * | sh",
+        "wget * | sh",
+        "chmod *",
+        "chown *"
+      ]
+    }
+  },
+  "amp.mcpTrustedServers": [
+    {
+      "serverName": "playwright",
+      "specHash": "4bf4c7a5c7fb269190fc2639edd4bf2312047477cb37a87018f9be84f5b3fe42",
+      "allow": true
+    },
+    {
+      "serverName": "dataforseo",
+      "specHash": "5e4ca163a59e4ba79f1ddf68c43bc7dcb916eb93d9ac78a75a8ba719fecb410d",
+      "allow": false
+    },
+    {
+      "serverName": "dataforseo",
+      "specHash": "ad0d97a9767f3cbaeea48abc7c63e40b65821806ea5586f5e54fa4969db11c4e",
+      "allow": true
+    }
+  ],
+  "amp.mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest",
+        "--cdp-endpoint",
+        "http://localhost:9222",
+        "--caps",
+        "vision"
+      ]
+    }
+  }
+}

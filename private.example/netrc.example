@@ -1,0 +1,3 @@
+machine api.example.com
+  login YOUR_USERNAME
+  password ${NETRC_PASSWORD}

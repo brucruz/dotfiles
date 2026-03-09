@@ -1,0 +1,66 @@
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = auto
+
+[color "branch"]
+  current = green
+  remote = yellow
+
+[core]
+  pager = less -FRSX
+  editor = cursor --wait
+  excludesfile = ~/.gitignore_global
+  compression = 0
+
+[include]
+  path = ~/.gitconfig.personal
+
+[alias]
+  co = checkout
+  st = status -sb
+  br = branch
+  ci = commit
+  fo = fetch origin
+  d = !git --no-pager diff
+  dt  = difftool
+  stat = !git --no-pager diff --stat
+  defaultBranch = !git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null | sed 's@^origin/@@' || echo main
+  remoteSetHead = !git remote set-head origin -a
+  m = !f(){ branch="$(git defaultBranch)"; git checkout "$branch"; }; f
+  sweep = !f(){ branch="$(git defaultBranch)"; merged="$(git branch --merged "$branch" | sed 's/^..//' | awk -v base="$branch" '$1 != base { print $1 }')"; if [ -n "$merged" ]; then echo "$merged" | xargs git branch -d; fi; git remote prune origin; }; f
+
+  # http://www.jukie.net/bart/blog/pimping-out-git-log
+  lg = log --graph --all --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(yellow)%d%Creset'
+
+  # Serve local repo. http://coderwall.com/p/eybtga
+  # Then other can access via `git clone git://#{YOUR_IP_ADDRESS}/
+  serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
+  # Removes a file from the index
+  unstage = reset HEAD --
+
+[help]
+  autocorrect = 1
+
+[push]
+  default = simple
+
+[commit]
+##  gpgsign = true
+
+[gpg]
+##  program = gpg
+
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+[http]
+  postBuffer = 1048576000
+[init]
+  defaultBranch = main
+[pull]
+  rebase = false
