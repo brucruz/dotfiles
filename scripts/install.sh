@@ -134,6 +134,48 @@ warn_if_insecure_permissions() {
   fi
 }
 
+link_app_support_file() {
+  source_name="$1"
+  app_support_subpath="$2"
+  source_path="$REPO_ROOT/dotfiles/$source_name"
+  target_path="$HOME/Library/Application Support/$app_support_subpath"
+  if [[ ! -e "$source_path" ]]; then
+    echo "skip: missing source $source_path"
+    return 0
+  fi
+  if [[ -L "$target_path" ]]; then
+    if [[ "$(readlink "$target_path")" == "$source_path" ]]; then
+      echo "ok: $target_path already linked"
+      return 0
+    fi
+    if [[ "$DRY_RUN" -eq 1 ]]; then
+      echo "dry-run: would replace symlink $target_path -> $source_path"
+      return 0
+    fi
+    rm "$target_path"
+    ln -s "$source_path" "$target_path"
+    echo "updated: $target_path"
+    return 0
+  fi
+  if [[ -e "$target_path" ]]; then
+    backup_path="${target_path}.backup.$(date +%Y%m%d%H%M%S)"
+    if [[ "$DRY_RUN" -eq 1 ]]; then
+      echo "dry-run: would move $target_path to $backup_path"
+      echo "dry-run: would create symlink $target_path -> $source_path"
+      return 0
+    fi
+    mv "$target_path" "$backup_path"
+    echo "backup: $target_path -> $backup_path"
+  fi
+  if [[ "$DRY_RUN" -eq 1 ]]; then
+    echo "dry-run: would create symlink $target_path -> $source_path"
+    return 0
+  fi
+  mkdir -p "$(dirname "$target_path")"
+  ln -s "$source_path" "$target_path"
+  echo "linked: $target_path -> $source_path"
+}
+
 print_optional_private_contract_guidance() {
   echo ""
   echo "Optional private contracts (local-only):"
@@ -236,6 +278,10 @@ link_file ".config/alacritty/font-size.toml" "$HOME/.config/alacritty/font-size.
 link_file ".config/yazi/yazi.toml" "$HOME/.config/yazi/yazi.toml"
 link_file ".config/zellij/config.kdl" "$HOME/.config/zellij/config.kdl"
 link_file ".config/amp/settings.json" "$HOME/.config/amp/settings.json"
+
+# Application Support files (macOS-specific paths)
+link_app_support_file "cursor/settings.json" "Cursor/User/settings.json"
+link_app_support_file "cursor/keybindings.json" "Cursor/User/keybindings.json"
 
 # Git identity (private, local-only)
 ensure_private_file "$PRIVATE_EXAMPLE_DIR/gitconfig.personal.example" "$HOME/.gitconfig.personal"

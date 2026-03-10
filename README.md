@@ -39,6 +39,7 @@ cargo install zellij
 | `dotfiles/.config/yazi/` | Yazi file manager config |
 | `dotfiles/.config/zellij/` | Zellij multiplexer config |
 | `dotfiles/.config/amp/` | Amp AI editor config |
+| `dotfiles/cursor/` | Cursor editor settings and keybindings |
 | `Brewfile` | Homebrew packages, casks, and extensions |
 
 ### Usage

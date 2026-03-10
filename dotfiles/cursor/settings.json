@@ -1,0 +1,291 @@
+{
+  "liveServer.settings.donotShowInfoMsg": true,
+  "workbench.colorTheme": "Spinel",
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.folders.associations": {
+    "infra": "app",
+    "entities": "class",
+    "schemas": "class",
+    "typeorm": "database",
+    "repositories": "mappings",
+    "http": "container",
+    "migrations": "tools",
+    "modules": "components",
+    "implementations": "core",
+    "dtos": "typescript",
+    "fakes": "mock"
+  },
+  "material-icon-theme.files.associations": {
+    "ormconfig.json": "database",
+    "tsconfig.json": "tune"
+  },
+  "workbench.startupEditor": "newUntitledFile",
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "erb": "html",
+    "ruby": "html"
+  },
+  "editor.tabSize": 2,
+  "editor.fontSize": 13,
+  "editor.lineHeight": 16,
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "explorer.compactFolders": false,
+  "editor.renderLineHighlight": "gutter",
+  "workbench.editor.labelFormat": "short",
+  "extensions.ignoreRecommendations": true,
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "breadcrumbs.enabled": true,
+  "[javascript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "[typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.enableSmartCommit": true,
+  "elixirLS.dialyzerEnabled": false,
+  "elixirLS.suggestSpecs": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[ruby]": {
+    "editor.defaultFormatter": "Shopify.ruby-lsp",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.semanticHighlighting.enabled": true,
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
+  },
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.autocomplete.enable": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": true,
+    "markdown": true
+  },
+  "bracket-pair-colorizer-2.depreciation-notice": false,
+  "yaml.schemas": {
+    "file:///Users/brunocruz/.cursor/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "atlascode.bitbucket.enabled": true,
+  "atlascode.jira.enabled": false,
+  "redhat.telemetry.enabled": false,
+  "json.schemas": [],
+  "yaml.customTags": [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Split sequence"
+  ],
+  "githubPullRequests.createOnPublishBranch": "never",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.suggest.showMethods": true,
+  "editor.suggest.preview": true,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.snippetSuggestions": "top",
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off"
+  },
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1",
+    "CW_NEW_SESSION": "1"
+  },
+  "editor.accessibilitySupport": "off",
+  "githubPullRequests.pullBranch": "never",
+  "gitlens.gitCommands.skipConfirmations": [
+    "fetch:command",
+    "stash-push:command",
+    "switch:command",
+    "stash-apply:command"
+  ],
+  "github.copilot-labs.advanced": {},
+  "totalTypeScript.hideAllTips": false,
+  "totalTypeScript.hideBasicTips": true,
+  "errorLens.excludeBySource": ["Vetur(2307)"],
+  "diffEditor.ignoreTrimWhitespace": true,
+  "auto-rename-tag.activationOnLanguage": ["*"],
+  "editor.inlineSuggest.showToolbar": "always",
+  "editor.stickyScroll.enabled": true,
+  "totalTypeScript.hiddenTips": [
+    "keyof",
+    "passing-generics-to-types",
+    "pick-utility-type",
+    "partial-utility-type",
+    "omit-utility-type",
+    "never-keyword",
+    "typeof",
+    "generic-slots-in-functions",
+    "mapped-type",
+    "readonly-utility-type",
+    "awaited-utility-type",
+    "returntype-utility-type",
+    "parameters-utility-type",
+    "non-null-expression",
+    "tuple-type",
+    "interface-with-generics",
+    "interface-with-multiple-generics",
+    "record-utility-type",
+    "as-const",
+    "as-const-on-object",
+    "type-predicate",
+    "in-operator-narrowing",
+    "type-alias-with-generics",
+    "exclude-utility-type"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "workbench.editor.empty.hint": "hidden",
+  "[javascript][javascriptreact][typescript][typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "editor.formatOnSave": true,
+  "solargraph.commandPath": "/Users/brunocruz/.rbenv/shims/solargraph",
+  "tailwindCSS.experimental.classRegex": [
+    "class:\\s*\"([^\"]*)\"",
+    "class:\\s*'([^']*)'"
+  ],
+  "accessibility.signals.lineHasError": {
+    "sound": "off"
+  },
+  "accessibility.signals.lineHasFoldedArea": {
+    "sound": "off"
+  },
+  "accessibility.signals.lineHasBreakpoint": {
+    "sound": "off"
+  },
+  "accessibility.signals.lineHasInlineSuggestion": {
+    "sound": "off"
+  },
+  "accessibility.signals.onDebugBreak": {
+    "sound": "off"
+  },
+  "accessibility.signals.noInlayHints": {
+    "sound": "off"
+  },
+  "sonarlint.rules": {
+    "Web:S6853": {
+      "level": "off"
+    },
+    "Web:S6851": {
+      "level": "off"
+    },
+    "javascript:S1874": {
+      "level": "off"
+    }
+  },
+  "github.copilot.editor.enableAutoCompletions": true,
+  "cursor.cpp.disabledLanguages": ["scminput"],
+  "gitlens.ai.experimental.model": "anthropic:claude-3-5-sonnet-20240620",
+  "cursor.chat.ghostTextAtSymbols": true,
+  "tailwind-fold.autoFold": false,
+  "[erb]": {
+    // "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+    "editor.defaultFormatter": "aki77.html-erb",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.language": "erb"
+  },
+  "[html.erb]": {
+    // "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+    "editor.defaultFormatter": "aki77.html-erb",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.language": "erb"
+  },
+  // "files.associations": {
+  //   "*.erb": "erb",
+  //   "*.html.erb": "html.erb"
+  // },
+  "gitlens.ai.model": "anthropic:claude-3-5-sonnet-latest",
+  "vue.server.hybridMode": false,
+  "ruby.lint": {
+    "rubocop": true,
+    "ruby-lsp": true
+  },
+  "ruby.format": "rubocop",
+  "ruby.intellisense": "rubyLocate",
+  "ruby.useBundler": true,
+  "ruby.useLanguageServer": true,
+  "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB",
+  "lldb.launch.expressions": "native",
+  "workbench.sideBar.location": "right",
+  "cursor.cmdk.autoSelect": false,
+  "cursor.composer.shouldChimeAfterChatFinishes": true,
+  "markdown-preview-enhanced.enablePreviewZenMode": true,
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "window.commandCenter": true,
+  "amp.url": "https://ampcode.com/",
+  "editor.wordBasedSuggestions": "off",
+  "amp.tab.enabled": true,
+  "aws.cloudformation.telemetry.enabled": false,
+  "cursor.composer.textSizeScale": 1.15
+}
