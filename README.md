@@ -16,13 +16,10 @@ cd ~/code/brucruz/dotfiles
 # 3. Install brew packages and link dotfiles
 ./scripts/install.sh --brew
 
-# 4. Neovim config (separate repo)
-git clone git@github.com:brucruz/kickstart.nvim.git ~/.config/nvim
-
-# 5. Install extras not in Homebrew
+# 4. Install extras not in Homebrew
 cargo install zellij
 
-# 6. Restart your terminal
+# 5. Restart your terminal
 ```
 
 ### What's Included
@@ -39,6 +36,7 @@ cargo install zellij
 | `dotfiles/.config/yazi/` | Yazi file manager config |
 | `dotfiles/.config/zellij/` | Zellij multiplexer config |
 | `dotfiles/.config/amp/` | Amp AI editor config |
+| `dotfiles/.config/nvim/` | Neovim config (originally based on kickstart.nvim) |
 | `dotfiles/cursor/` | Cursor editor settings and keybindings |
 | `Brewfile` | Homebrew packages, casks, and extensions |
 

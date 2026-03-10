@@ -200,21 +200,6 @@ install_program() {
   eval "$install_cmd" || { echo "warning: $name install exited with status $?"; }
 }
 
-clone_repo() {
-  repo_url="$1"
-  target_dir="$2"
-  name="$3"
-  if [[ -d "$target_dir" ]]; then
-    echo "ok: $name already cloned at $target_dir"
-    return 0
-  fi
-  if [[ "$DRY_RUN" -eq 1 ]]; then
-    echo "dry-run: would clone $name to $target_dir"
-    return 0
-  fi
-  echo "Cloning $name..."
-  git clone "$repo_url" "$target_dir"
-}
 
 echo "Applying dotfiles from $DOTFILES_DIR"
 if [[ "$DRY_RUN" -eq 1 ]]; then
@@ -260,7 +245,6 @@ if [[ "$FULL" -eq 1 ]]; then
     "command -v amp" \
     'curl -fsSL https://ampcode.com/install.sh | bash'
 
-  clone_repo "https://github.com/brucruz/kickstart.nvim.git" "$HOME/.config/nvim" "Neovim config (kickstart.nvim)"
 fi
 
 # Home-level dotfiles
@@ -278,6 +262,7 @@ link_file ".config/alacritty/font-size.toml" "$HOME/.config/alacritty/font-size.
 link_file ".config/yazi/yazi.toml" "$HOME/.config/yazi/yazi.toml"
 link_file ".config/zellij/config.kdl" "$HOME/.config/zellij/config.kdl"
 link_file ".config/amp/settings.json" "$HOME/.config/amp/settings.json"
+link_file ".config/nvim" "$HOME/.config/nvim"
 
 # Application Support files (macOS-specific paths)
 link_app_support_file "cursor/settings.json" "Cursor/User/settings.json"
@@ -292,7 +277,7 @@ print_optional_private_contract_guidance
 if [[ "$FULL" -eq 0 ]]; then
   echo ""
   echo "Tip: run with --full to also install Homebrew, brew packages, Oh My Zsh,"
-  echo "     nvm, Atuin, Amp CLI, and clone Neovim config."
+  echo "     nvm, Atuin, and Amp CLI."
 fi
 
 echo ""
