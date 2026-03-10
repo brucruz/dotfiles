@@ -1,3 +1,11 @@
+export DIRENV_LOG_FORMAT="" # make direnv a bit less verbose
+# Canary CLI is how we interface with our dev scripts
+# Set this to where you plan to clone the canary monorepo(more below)
+# Is CANARY_DIR set. Note: ~ might not be expanded correctly if quoted. Use $HOME tends to be more reliable
+export CANARY_DIR="$HOME/code/work/canary/"
+eval "$(direnv hook zsh)"
+
+
 ZSH=$HOME/.oh-my-zsh
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
@@ -61,3 +69,7 @@ twilio() {
 command -v atuin >/dev/null 2>&1 && eval "$(atuin init zsh)"
 [[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
 [[ -d "$HOME/.opencode/bin" ]] && export PATH="$HOME/.opencode/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

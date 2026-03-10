@@ -28,5 +28,7 @@ background = "#050726"
 bindings = [
   { key = "F11", action = "ToggleFullscreen" },
   { key = "Right", mods =  "Alt", chars = "\u001BF" },
-  { key = "Left", mods = "Alt", chars = "\u001BB" }
+  { key = "Left", mods = "Alt", chars = "\u001BB" },
+  { key = "Return", mods = "Shift", chars = "\u001B\r" }
 ]
+
