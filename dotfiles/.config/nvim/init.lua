@@ -1043,27 +1043,6 @@ require('lazy').setup({
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'plugins.ai', -- adds ai functionalities
 
-  {
-    'rest-nvim/rest.nvim',
-    build = false,
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      opts = function(_, opts)
-        opts.ensure_installed = opts.ensure_installed or {}
-        table.insert(opts.ensure_installed, 'http')
-      end,
-    },
-    config = function()
-      vim.g.rest_nvim = {}
-      vim.api.nvim_set_keymap('n', '<leader>rr', '<cmd>Rest run<CR>', { noremap = true, silent = true })
-
-      -- first load extension
-      -- require('telescope').load_extension 'rest'
-      -- then use it, you can also use the `:Telescope rest select_env` command
-      -- require('telescope').extensions.rest.select_env()
-    end,
-  },
-
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
